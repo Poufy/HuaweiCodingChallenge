@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'com.huawei.agconnect'
 
 android {
     compileSdkVersion 30
@@ -16,6 +17,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('huaweicodingchallenge.jks')
+            keyAlias 'huaweicodingchallenge'
+            keyPassword 'shintariven4'
+            storePassword 'shintariven4'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -36,4 +47,5 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation('com.huawei.hms:hwid:5.0.5.300')
 }

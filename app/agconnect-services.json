@@ -1,0 +1,14 @@
+{
+	"client":{
+		"appType":"1",
+		"cp_id":"5190090000028648709",
+		"product_id":"736430079244739391",
+		"client_id":"516188011436716416",
+		"client_secret":"386B91F9A95CD1A813097E41FC41AFE848B631112094ED21CF7E87F3F46A59C0",
+		"project_id":"736430079244739391",
+		"app_id":"103479143",
+		"api_key":"CgB6e3x9tYgDxwveo/rfb7BT/CJANBUNZlVjOdUVwUVp2DgCetUsCleKedPdpkgbP8MRHVGzFg/558rp+T+FfqJH",
+		"package_name":"com.example.huaweicodingchallenge"
+	},
+	"configuration_version":"1.0"
+}
