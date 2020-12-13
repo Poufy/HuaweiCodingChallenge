@@ -25,14 +25,16 @@ public class UserActivity extends AppCompatActivity {
 
 
         TextView userDisplayName = (TextView)findViewById(R.id.userDispalyName);
-        Button signOutBtn = (Button) findViewById(R.id.challenge_signout);
-        addButtonListener(signOutBtn);
-
-        AuthService.setContext(this);
-        mAuthManager = AuthService.getInstance().mAuthManager;
-
-        Bundle parametersBundle = getIntent().getExtras();
-        userDisplayName.setText(parametersBundle.get("displayName").toString());
+        TextView userDisplayName1 = (TextView)findViewById(R.id.userDispalyName1);
+//        //Button signOutBtn = (Button) findViewById(R.id.challenge_signout);
+//        //addButtonListener(signOutBtn);
+//
+//        AuthService.setContext(this);
+//        mAuthManager = AuthService.getInstance().mAuthManager;
+//
+//        Bundle parametersBundle = getIntent().getExtras();
+//        userDisplayName.setText(parametersBundle.get("displayName").toString());
+//        userDisplayName1.setText(parametersBundle.get("displayName").toString());
     }
 
 

@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.HuaweiCodingChallenge" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#f72e27</item>
-        <item name="colorPrimaryVariant">#f72e27</item>
+        <item name="colorPrimary">#F19D9D</item>
+        <item name="colorPrimaryVariant">#F19D9D</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
