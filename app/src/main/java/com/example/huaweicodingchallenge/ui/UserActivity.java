@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -26,19 +28,19 @@ public class UserActivity extends AppCompatActivity {
 
         TextView userDisplayName = (TextView)findViewById(R.id.userDispalyName);
         TextView userDisplayName1 = (TextView)findViewById(R.id.userDispalyName1);
-//        //Button signOutBtn = (Button) findViewById(R.id.challenge_signout);
-//        //addButtonListener(signOutBtn);
-//
-//        AuthService.setContext(this);
-//        mAuthManager = AuthService.getInstance().mAuthManager;
-//
-//        Bundle parametersBundle = getIntent().getExtras();
-//        userDisplayName.setText(parametersBundle.get("displayName").toString());
-//        userDisplayName1.setText(parametersBundle.get("displayName").toString());
+        FrameLayout signOutBtn = (FrameLayout) findViewById(R.id.challenge_signout);
+        addButtonListener(signOutBtn);
+
+        AuthService.setContext(this);
+        mAuthManager = AuthService.getInstance().mAuthManager;
+
+        Bundle parametersBundle = getIntent().getExtras();
+        userDisplayName.setText(parametersBundle.get("displayName").toString());
+        userDisplayName1.setText(parametersBundle.get("displayName").toString());
     }
 
 
-    private void addButtonListener(Button signOutBtn){
+    private void addButtonListener(FrameLayout signOutBtn){
         signOutBtn.setOnClickListener(v -> UserActivity.this.signOut());
     }
 

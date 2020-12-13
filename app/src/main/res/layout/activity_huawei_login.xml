@@ -4,19 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/backgroundgrad"
+    android:orientation="vertical"
     tools:context=".ui.HuaweiLoginActivity">
 
-    <Button
-        android:id="@+id/challenge_silent_signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign in"
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="0.5"-->
+    <!--        >-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="0.5">-->
+
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/home_btn_test"-->
+    <!--        android:drawableTop="@drawable/home_icon_test"-->
+    <!--        android:textColor="#FFFFFF"-->
+    <!--        android:id="@+id/ButtonTest"-->
+    <!--        android:paddingTop="32sp"-->
+    <!--        android:drawablePadding="-15sp"-->
+    <!--        android:text="this is text"/>-->
+
+    <!--    <Button-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:drawableLeft="@drawable/my_btn_icon"-->
+    <!--        android:gravity="left|center_vertical" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/challenge_silent_signin"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sign in"-->
+<!--        android:textSize="14sp"-->
+<!--        android:fontFamily="@font/raleway_bold"-->
+
+
+
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+<!--        app:layout_constraintVertical_bias="0.463"-->
+<!--        tools:text="Sign in" />-->
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        app:civ_border_color="@color/black"
+        android:background="@drawable/bg_circle_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Sign in" />
+        app:layout_constraintVertical_bias="0.209"
+        android:src="@drawable/padlock"/>
+
+
+
+    <FrameLayout
+        android:id="@+id/challenge_silent_signin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_button_rounded_login"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:padding="6dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
+
+        <TextView
+            style="@style/TextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="14dp"
+
+            android:fontFamily="@font/raleway_bold"
+            android:gravity="center_vertical"
+            android:text="Sign in with HUAWEI ID"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+
+    </FrameLayout>
+
+
+    <!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

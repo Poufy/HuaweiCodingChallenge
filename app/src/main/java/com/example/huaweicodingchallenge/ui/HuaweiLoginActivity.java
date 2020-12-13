@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.huaweicodingchallenge.R;
@@ -30,7 +31,7 @@ public class HuaweiLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_huawei_login);
 
-        Button signInButton = (Button) findViewById(R.id.challenge_silent_signin);
+        FrameLayout signInButton = (FrameLayout) findViewById(R.id.challenge_silent_signin);
         addOnClickListener(signInButton);
 
         AuthService.setContext(this);
@@ -38,7 +39,7 @@ public class HuaweiLoginActivity extends AppCompatActivity {
 
     }
 
-    private void addOnClickListener(Button signInButton) {
+    private void addOnClickListener(FrameLayout signInButton) {
         signInButton.setOnClickListener(v -> HuaweiLoginActivity.this.silentSignIn());
     }
 
