@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.huawei.hmf.tasks.OnFailureListener;
@@ -18,7 +19,7 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper;
 import com.huawei.hms.support.hwid.result.AuthHuaweiId;
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService;
 
-public class HuaweiLoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class HuaweiLoginActivity extends AppCompatActivity {
     private static final int  REQUEST_SIGN_IN_LOGIN_CODE = 3000; // Login by code
     private static final int  REQUEST_SIGN_IN_LOGIN = 3001; // Normal Login
     private HuaweiIdAuthService mAuthManager;
@@ -29,8 +30,8 @@ public class HuaweiLoginActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_huawei_login);
 
-        findViewById(R.id.challenge_silent_signin).setOnClickListener(this);
-        findViewById(R.id.challenge_signout).setOnClickListener(this);
+        Button signInButton = (Button) findViewById(R.id.challenge_silent_signin);
+        addOnClickListener(signInButton);
 
         mAuthParam = new HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
                 .setIdToken()
@@ -39,6 +40,10 @@ public class HuaweiLoginActivity extends AppCompatActivity implements View.OnCli
 
         mAuthManager = HuaweiIdAuthManager.getService(HuaweiLoginActivity.this, mAuthParam);
 
+    }
+
+    private void addOnClickListener(Button signInButton) {
+        signInButton.setOnClickListener(v -> HuaweiLoginActivity.this.silentSignIn());
     }
 
     private void silentSignIn() {
@@ -66,24 +71,6 @@ public class HuaweiLoginActivity extends AppCompatActivity implements View.OnCli
         startActivityForResult(mAuthManager.getSignInIntent(), REQUEST_SIGN_IN_LOGIN);
     }
 
-    private void signOut() {
-        if (mAuthManager != null) {
-            Task<Void> signOutTask = mAuthManager.signOut();
-            signOutTask.addOnSuccessListener(aVoid -> Toast.makeText(HuaweiLoginActivity.this, "SignOut Success", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(HuaweiLoginActivity.this, "signOut fail", Toast.LENGTH_SHORT).show());
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.challenge_silent_signin:
-                silentSignIn();
-                break;
-            case R.id.challenge_signout:
-                signOut();
-                break;
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
