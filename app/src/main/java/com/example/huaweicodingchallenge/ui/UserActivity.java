@@ -25,7 +25,6 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
 
-
         TextView userDisplayName = (TextView)findViewById(R.id.userDispalyName);
         TextView userDisplayName1 = (TextView)findViewById(R.id.userDispalyName1);
         FrameLayout signOutBtn = (FrameLayout) findViewById(R.id.challenge_signout);

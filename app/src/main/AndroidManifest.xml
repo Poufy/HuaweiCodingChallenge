@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HuaweiCodingChallenge">
         <activity android:name=".ui.UserActivity">
-
         </activity>
         <activity android:name=".ui.HuaweiLoginActivity">
         </activity>
