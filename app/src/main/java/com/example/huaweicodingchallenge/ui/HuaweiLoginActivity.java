@@ -1,12 +1,14 @@
 package com.example.huaweicodingchallenge.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.huaweicodingchallenge.R;
@@ -21,32 +23,37 @@ import com.huawei.hms.support.hwid.service.HuaweiIdAuthService;
 import domain.AuthService;
 
 public class HuaweiLoginActivity extends AppCompatActivity {
-    private static final int REQUEST_SIGN_IN_LOGIN_CODE = 3000; // Login by code
     private static final int REQUEST_SIGN_IN_LOGIN = 3001; // Normal Login
     private HuaweiIdAuthService mAuthManager;
-    private static final String TAG = "HuaweiLoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_huawei_login);
 
-        FrameLayout signInButton = (FrameLayout) findViewById(R.id.challenge_silent_signin);
+        // Here we defined our button as a framelayout composed of 3 elements
+//        LinearLayout signInButton = (LinearLayout) findViewById(R.id.challenge_silent_signin);
+        ConstraintLayout signInButton = (ConstraintLayout) findViewById(R.id.challenge_silent_signin);
+        // Adding on click listeners to the framelayout
         addOnClickListener(signInButton);
 
+        // Setting the context for the AuthService singleton class
         AuthService.setContext(this);
+
+        // Retrieving the Authservice instance object from the singleton
         mAuthManager = AuthService.getInstance().mAuthManager;
 
     }
 
-    private void addOnClickListener(FrameLayout signInButton) {
+    private void addOnClickListener(ConstraintLayout signInButton) {
         signInButton.setOnClickListener(v -> HuaweiLoginActivity.this.silentSignIn());
     }
+
 
     private void silentSignIn() {
         Task<AuthHuaweiId> task = mAuthManager.silentSignIn();
         task.addOnSuccessListener(authHuaweiId -> {
-            Toast.makeText(HuaweiLoginActivity.this, "Silent SignIn success", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HuaweiLoginActivity.this, "Sign in Success!", Toast.LENGTH_SHORT).show();
             Intent toUserActivityIntent = new Intent(HuaweiLoginActivity.this, UserActivity.class);
             passParametersToIntent(toUserActivityIntent, authHuaweiId);
             startActivity(toUserActivityIntent);
@@ -61,10 +68,7 @@ public class HuaweiLoginActivity extends AppCompatActivity {
     }
 
     private void passParametersToIntent(Intent toUserActivityIntent, AuthHuaweiId authHuaweiId) {
-        Log.e(TAG, "passParametersToIntent: ");
-        Log.d(TAG, authHuaweiId.getDisplayName());
         toUserActivityIntent.putExtra("displayName", authHuaweiId.getDisplayName());
-        //toUserActivityIntent.putExtra("age", authHuaweiId.getAgeRange());
     }
 
     private void signIn() {
@@ -81,14 +85,10 @@ public class HuaweiLoginActivity extends AppCompatActivity {
             Task<AuthHuaweiId> authHuaweiIdTask = HuaweiIdAuthManager.parseAuthResultFromIntent(data);
             if (authHuaweiIdTask.isSuccessful()) {
                 AuthHuaweiId huaweiAccount = authHuaweiIdTask.getResult();
-                Toast.makeText(this, huaweiAccount.getDisplayName() + " signIn success ", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "AccessToken: " + huaweiAccount.getAccessToken(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "In onactivityResult", Toast.LENGTH_LONG).show();
-
-//                Intent toUserActivityIntent = new Intent(HuaweiLoginActivity.this, UserActivity.class);
-//                toUserActivityIntent.putExtra("account", authHuaweiId);
-//
-//                startActivity(toUserActivityIntent);
+                Toast.makeText(this, huaweiAccount.getDisplayName() + " Sign in Success!", Toast.LENGTH_SHORT).show();
+                Intent toUserActivityIntent = new Intent(HuaweiLoginActivity.this, UserActivity.class);
+                passParametersToIntent(toUserActivityIntent, huaweiAccount);
+                startActivity(toUserActivityIntent);
             } else {
                 Toast.makeText(this, "signIn failed: " + ((ApiException) authHuaweiIdTask.getException()).getStatusCode(), Toast.LENGTH_SHORT).show();
             }

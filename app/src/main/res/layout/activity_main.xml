@@ -9,31 +9,32 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:id="@+id/padLockLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/bg_circle_login"
         android:src="@drawable/padlock"
         app:civ_border_color="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/logoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Huawei Login Kit"
-        android:textSize="40sp"
         android:fontFamily="@font/raleway_bold"
+        android:text="Simplicity is Key"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/padLockLogo"
+        app:layout_constraintVertical_bias="0.545" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
